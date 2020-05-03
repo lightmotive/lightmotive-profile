@@ -5,7 +5,7 @@
   aria-label="Main navigation"
 >
   <img
-    src="./assets/professional-logo-111x180.png"
+    src="./assets/logos/Color logo - no background.svg"
     alt="professional logo"
     class="professional-logo"
   />
@@ -20,19 +20,22 @@
     role="region"
     aria-labelledby="welcome-section-header"
   >
-    <header id="welcome-section-header">
+    <header id="welcome-section-header" class="welcome-section-header">
       <h1>LightMotive is Andre Light</h1>
+      <hr class="section-header-hr" />
+      <div class="welcome-section-sub-header">Trusted Strategic Leader</div>
     </header>
     <img
-      src="https://www.gravatar.com/avatar/b2934cae6366d26037b082551e662a7e.jpg?s=400"
+      src="./assets/andre_headshot.jpg"
       class="profile-photo"
-      alt="personal photo"
+      alt="headshot"
     />
-    <h2>Trusted Strategic Leader</h2>
-    <p>
-      Helping humanness shine through empathetic tech enablement and innovative
-      software solutions.
-    </p>
+    <div class="profile-photo-caption">
+      <p>
+        Helping humanness shine through empathetic tech enablement and
+        innovative software solutions.
+      </p>
+    </div>
   </section>
   <section
     id="projects"
@@ -40,19 +43,43 @@
     role="region"
     aria-labelledby="projects-header"
   >
-    <header id="projects-header"><h2>Portfolio</h2></header>
+    <header id="projects-header" class="projects-header">
+      <h2>Portfolio</h2>
+      <hr class="section-header-hr" />
+    </header>
     <div class="projects-container">
       <div class="project-tile">
-        <a href="#" target="_blank">
+        <a href="#">
           <img
-            src="./assets/screenshot-fcc-personal-portfolio-webpage.png"
+            src="./assets/screenshot-lightmotive-profile.png"
             alt="project screenshot"
             class="project-tile__screenshot"
           />
           <div class="project-tile__description">
-            <span>Personal profile</span>
+            <span>Professional profile (this page)</span>
             <a
-              href="https://github.com/lightmotive/fcc-personal-portfolio-webpage"
+              href="https://github.com/lightmotive/lightmotive-profile"
+              target="_blank"
+              >Source</a
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="project-tile">
+        <a
+          href="https://lightmotive.pro/fcc-technical-documentation-page/"
+          target="_blank"
+        >
+          <img
+            src="./assets/screenshot-fcc-technical-documentation-page.png"
+            alt="project screenshot"
+            class="project-tile__screenshot"
+          />
+          <div class="project-tile__description">
+            <span>Technical documentation</span>
+            <a
+              href="https://github.com/lightmotive/fcc-technical-documentation-page/"
               target="_blank"
               >Source</a
             >
@@ -100,27 +127,6 @@
       </div>
 
       <div class="project-tile">
-        <a
-          href="https://lightmotive.pro/fcc-technical-documentation-page/"
-          target="_blank"
-        >
-          <img
-            src="./assets/screenshot-fcc-technical-documentation-page.png"
-            alt="project screenshot"
-            class="project-tile__screenshot"
-          />
-          <div class="project-tile__description">
-            <span>Technical documentation</span>
-            <a
-              href="https://github.com/lightmotive/fcc-technical-documentation-page/"
-              target="_blank"
-              >Source</a
-            >
-          </div>
-        </a>
-      </div>
-
-      <div class="project-tile">
         <a href="https://lightmotive.pro/fcc-survey-form/" target="_blank">
           <img
             src="./assets/screenshot-fcc-survey-form.png"
@@ -141,13 +147,15 @@
       <div class="project-tile">
         <a href="#" target="_blank">
           <img
-            src="./assets/professional-logo-111x180.png"
+            src="./assets/logos/Color logo - no background.svg"
             alt="project screenshot"
             class="project-tile__screenshot"
           />
           <div class="project-tile__description">
-            <span>More soon...</span>
-            <a href="#" target="_blank">Source</a>
+            <span>Active GitHub projects</span>
+            <a href="https://github.com/lightmotive/" target="_blank"
+              >View all</a
+            >
           </div>
         </a>
       </div>
@@ -161,30 +169,25 @@
     role="region"
     aria-labelledby="contact-section-header"
   >
-    <div>
-      <header id="contact-section-header">
-        <h2>Contact</h2>
-      </header>
-      <nav
-        class="contact-nav"
-        role="navigation"
-        aria-label="Contact navigation"
-      >
-        <a
-          id="profile-link"
-          href="https://github.com/lightmotive/"
-          target="_blank"
-          class="nav-link"
-          >Feel free to stalk first <i class="fab fa-github"></i
-        ></a>
-        <br />
-        <a
-          href="https://www.linkedin.com/in/andrelight/"
-          target="_blank"
-          class="nav-link"
-          >Are we a good fit? <i class="fab fa-linkedin"></i
-        ></a>
-      </nav>
-    </div>
+    <header id="contact-section-header" class="contact-section-header">
+      <h2>Contact</h2>
+      <hr class="section-header-hr" />
+    </header>
+    <nav class="contact-nav" role="navigation" aria-label="Contact navigation">
+      <a
+        id="profile-link"
+        href="https://github.com/lightmotive/"
+        target="_blank"
+        class="nav-link"
+        >Feel free to stalk first <i class="fab fa-github"></i
+      ></a>
+      <br />
+      <a
+        href="https://www.linkedin.com/in/andrelight/"
+        target="_blank"
+        class="nav-link"
+        >Might we fit well? <i class="fab fa-linkedin"></i
+      ></a>
+    </nav>
   </section>
 </footer>

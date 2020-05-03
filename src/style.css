@@ -1,26 +1,35 @@
+@font-face {
+  font-family: "Pier Sans";
+  src: url("./assets/fonts/pier-sans/PierSans-Regular.otf");
+}
+
 :root {
   /* Font */
   /* Font sources: https://fonts.google.com/specimen/Libre+Baskerville and https://fonts.google.com/specimen/Open+Sans */
-  --font-family-headings: "Open Sans", sans-serif;
+  --font-family-headings: "Pier Sans", sans-serif;
   --font-family-paragraph: "Libre Baskerville", serif;
 
   /* Color - Source: TBD */
-  --color-primary: white;
-  --color-primary-paragraph: #238a91;
-  --color-secondary1: #238a91;
-  --color-secondary1-paragraph: white;
-  --color-secondary2: #1761a0;
-  --color-secondary2-paragraph: white;
+  --color-primary: #262c37;
+  --color-primary-header: white;
+  --color-primary-paragraph: white;
+  --color-secondary1: var(--color-primary-paragraph);
+  --color-secondary1-header: var(--color-primary);
+  --color-secondary1-paragraph: var(--color-primary);
+  --color-secondary2: var(--color-primary);
+  --color-secondary2-paragraph: var(--color-primary-paragraph);
+  --color-highlight: #988d77;
+  --color-highlight-text: #007fff;
 
   /* Size */
-  --header-height: 70px;
+  --header-height: 80px;
   --header-height-adjust-ratio: 1;
   --font-size-main: 1.2em;
-  --font-size-heading-step: 0.1625;
-  --professional-logo-width: 90px;
-  --professional-logo-height: 55.5px;
+  --professional-logo-height: 55px;
+  --professional-logo-text-height-offset: 26px;
   --padding-content-box: 0.5em;
   --tile-min-width: 300px;
+  --profile-photo-width: 420px;
 }
 
 html {
@@ -52,38 +61,44 @@ h5,
 h6,
 header {
   font-family: var(--font-family-headings);
+  font-weight: normal;
 }
 
 .site-nav {
   display: flex;
-  justify-content: Center;
+  justify-content: center;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  padding: var(--padding-content-box);
   width: 100%;
   z-index: 10;
-  height: calc(var(--header-height) * var(--header-height-adjust-ratio));
+  height: calc(calc(var(--header-height) * var(--header-height-adjust-ratio)));
   background-color: var(--color-primary);
   color: var(--color-primary-paragraph);
 }
 
+/* .site-nav {
+  flex-direction: column;
+} */
+
 .site-nav .professional-logo {
-  justify-self: flex-start;
-  width: var(--professional-logo-width);
   height: var(--professional-logo-height);
-  margin-left: var(--padding-content-box);
+  margin-right: calc(var(--padding-content-box) * 4);
 }
 
 .nav-link {
   text-decoration: initial;
-  font-weight: bold;
+  color: var(--color-highlight);
+  font-family: var(--font-family-headings);
+}
+.nav-link:hover {
+  text-decoration: underline;
 }
 
 .site-nav .nav-link {
-  color: var(--color-primary-paragraph);
   margin-left: calc(var(--padding-content-box) * 2);
+  padding-top: var(--professional-logo-text-height-offset);
 }
 
 .main {
@@ -103,21 +118,51 @@ header {
 }
 
 .section.section--welcome {
-  height: 100vh;
-  background-color: var(--color-secondary1);
-  color: var(--color-secondary1-paragraph);
+  height: calc(
+    100vh - calc(var(--header-height) * var(--header-height-adjust-ratio))
+  );
+  background-color: var(--color-primary);
+  color: var(--color-primary-paragraph);
+}
+
+.welcome-section-header h1 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+hr.section-header-hr {
+  height: 2px;
+  border: 0;
+  border-top: 1px solid var(--color-highlight);
+  margin: 1em 0;
+}
+
+.welcome-section-sub-header {
+  margin: 10px 0 25px 0;
+  font-size: 1.2em;
 }
 
 .profile-photo {
-  width: 200px;
-  border-radius: 50%;
+  width: 100%;
+  max-width: var(--profile-photo-width);
+  border-radius: 3%;
+  box-shadow: 0px 0px 5px 0px var(--color-highlight);
+}
+
+.profile-photo-caption {
+  width: 100%;
+  max-width: calc(var(--profile-photo-width) + 25px);
+  margin-top: var(--padding-content-box);
+  font-style: italic;
 }
 
 .section.section--portfolio {
   align-self: center;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 2em;
+  padding-bottom: calc(var(--padding-content-box) * 4);
+  background-color: var(--color-secondary1);
+  color: var(--color-secondary1-paragraph);
 }
 
 .section.section--portfolio header {
@@ -132,9 +177,10 @@ header {
 }
 
 .section.section--portfolio .projects-container .project-tile {
-  background-color: var(--color-primary-paragraph);
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-primary-paragraph);
   border-radius: 0 0 var(--padding-content-box) var(--padding-content-box);
+  box-shadow: 0px 1px 2px 0px var(--color-highlight);
 }
 
 .section.section--portfolio
@@ -152,13 +198,14 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: var(--font-family-headings);
 }
 .section.section--portfolio
   .projects-container
   .project-tile
   .project-tile__description
   a {
-  color: var(--color-primary);
+  color: var(--color-primary-paragraph);
   text-decoration: none;
 }
 .section.section--portfolio
@@ -166,7 +213,16 @@ header {
   .project-tile
   .project-tile__description
   a:last-of-type {
-  font-size: 70%;
+  font-size: 80%;
+  font-family: "Courier New", Courier, monospace;
+  padding-bottom: var(--padding-content-box);
+}
+.section.section--portfolio
+  .projects-container
+  .project-tile
+  .project-tile__description
+  a:last-of-type:hover {
+  text-decoration: underline;
 }
 .section.section--portfolio
   .projects-container
@@ -197,17 +253,19 @@ header {
 .contact-nav .nav-link {
   color: var(--color-secondary2-paragraph);
 }
+.contact-nav .nav-link .fab {
+  color: var(--color-highlight);
+}
 
 .section.section--contact .contact-nav .contact-nav .nav-link {
   color: var(--color-secondary2-paragraph);
 }
 
-@media (max-width: 600px) {
-  :root {
-    /* --header-height-adjust-ratio: 1.65;
-    --font-size-heading-step: 0.13; */
-  }
+.contact-section-header h2 {
+  margin-block-start: 0;
+}
 
+@media (max-width: 600px) {
   .site-nav .nav-items {
     width: 100%;
   }
@@ -224,3 +282,12 @@ header {
     grid-template-columns: 1fr;
   }
 }
+
+/* @media (max-width: 525px) {
+  :root {
+    --header-height-adjust-ratio: 1.65;
+  }
+  .site-nav .professional-logo {
+    margin-right: unset;
+  }
+} */
