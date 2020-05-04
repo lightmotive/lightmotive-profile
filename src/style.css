@@ -1,13 +1,12 @@
 @font-face {
   font-family: "Pier Sans";
-  src: url("./assets/fonts/pier-sans/PierSans-Regular.otf");
+  src: url("./assets/fonts/pier-sans/PierSans-Regular.otf"); /* PierSans downloaded from https://befonts.com/wp-content/uploads/2019/08/piersans-freeforpersonaluse.zip */
 }
 
 :root {
   /* Font */
-  /* Font sources: https://fonts.google.com/specimen/Libre+Baskerville and https://fonts.google.com/specimen/Open+Sans */
   --font-family-headings: "Pier Sans", sans-serif;
-  --font-family-paragraph: "Libre Baskerville", serif;
+  --font-family-paragraph: "Libre Baskerville", serif; /* Font source: loaded via index.html: https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap  */
 
   /* Color - Source: TBD */
   --color-primary: #262c37;
@@ -26,11 +25,19 @@
   --header-height: 80px;
   --header-height-adjust-ratio: 1;
   --font-size-main: 1.2em;
-  --professional-logo-height: 55px;
-  --professional-logo-text-height-offset: 26px;
-  --padding-content-box: 0.5em;
+  --content-box-padding: 0.5em;
+}
+.project-container {
   --tile-min-width: 300px;
-  --profile-photo-width: 420px;
+}
+.profile-figure {
+  --photo-width: 420px;
+}
+.site-nav__logo {
+  --height: 55px;
+}
+.site-nav {
+  --logo-text-height-offset: 26px;
 }
 
 html {
@@ -55,15 +62,13 @@ body {
   min-width: var(--body-min-width);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header {
+.nav-link {
+  text-decoration: initial;
+  color: var(--color-highlight);
   font-family: var(--font-family-headings);
-  font-weight: normal;
+}
+.nav-link:hover {
+  text-decoration: underline;
 }
 
 .site-nav {
@@ -79,27 +84,15 @@ header {
   background-color: var(--color-primary);
   color: var(--color-primary-paragraph);
 }
-
-.site-nav .professional-logo {
-  height: var(--professional-logo-height);
-  margin-right: calc(var(--padding-content-box) * 4);
+.site-nav__logo {
+  height: var(--height);
+  margin-right: calc(var(--content-box-padding) * 4);
 }
-
-.nav-link {
-  text-decoration: initial;
-  color: var(--color-highlight);
-  font-family: var(--font-family-headings);
-}
-.nav-link:hover {
-  text-decoration: underline;
-}
-
-.site-nav .nav-link {
-  margin-left: calc(var(--padding-content-box) * 2);
+.site-nav__nav-link {
+  margin-left: calc(var(--content-box-padding) * 2);
   font-size: calc(var(--font-size-main) * var(--header-height-adjust-ratio));
   padding-top: calc(
-    var(--professional-logo-text-height-offset) *
-      var(--header-height-adjust-ratio)
+    var(--logo-text-height-offset) * var(--header-height-adjust-ratio)
   );
 }
 
@@ -118,157 +111,132 @@ header {
   text-align: center;
   padding: 0 10%;
 }
-
-.section.section--welcome {
+.section--welcome {
   height: calc(
     100vh - calc(var(--header-height) * var(--header-height-adjust-ratio))
   );
   background-color: var(--color-primary);
   color: var(--color-primary-paragraph);
 }
-
-.welcome-section-header h1 {
+.section--portfolio {
+  align-self: center;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: calc(var(--content-box-padding) * 4);
+  background-color: var(--color-secondary1);
+  color: var(--color-secondary1-paragraph);
+}
+.section--contact {
+  background-color: var(--color-secondary2);
+  color: var(--color-secondary2-paragraph);
+  height: 35vh;
+}
+.section__header {
+  font-family: var(--font-family-headings);
+  font-weight: normal;
+}
+.section__header--centered-main {
+  /* SCSS mixin would be useful here to enable composition and eliminate duplicate code */
+  font-family: var(--font-family-headings);
+  font-weight: normal;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 2em;
+}
+.section__header--centered {
+  /* SCSS mixin would be useful here to enable composition and eliminate duplicate code */
+  font-family: var(--font-family-headings);
+  font-weight: normal;
   margin-block-start: 0;
   margin-block-end: 0;
 }
-
-hr.section-header-hr {
+.section__header-hr {
   height: 2px;
   border: 0;
   border-top: 1px solid var(--color-highlight);
   margin: 1em 0;
 }
 
-.welcome-section-sub-header {
-  margin: 10px 0 25px 0;
-  font-size: 1.2em;
-}
-
-.profile-photo {
+.profile-figure {
   width: 100%;
-  max-width: var(--profile-photo-width);
+  max-width: calc(var(--photo-width) + 30px);
+}
+.profile-figure__photo {
+  width: 100%;
+  max-width: var(--photo-width);
   border-radius: 3%;
   box-shadow: 0px 0px 5px 0px var(--color-highlight);
 }
-
-.profile-photo-caption {
+.profile-figure__caption {
   width: 100%;
-  max-width: calc(var(--profile-photo-width) + 25px);
-  margin-top: var(--padding-content-box);
+  margin-top: var(--content-box-padding);
   font-style: italic;
 }
 
-.section.section--portfolio {
-  align-self: center;
-  flex-direction: column;
-  width: 100%;
-  padding-bottom: calc(var(--padding-content-box) * 4);
-  background-color: var(--color-secondary1);
-  color: var(--color-secondary1-paragraph);
-}
-
-.section.section--portfolio header {
-  align-self: flex-start;
-}
-
-.section.section--portfolio .projects-container {
+.project-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--tile-min-width), 1fr));
-  grid-gap: calc(var(--padding-content-box) * 3);
+  grid-gap: calc(var(--content-box-padding) * 3);
   width: 100%;
 }
 
-.section.section--portfolio .projects-container .project-tile {
+.project-tile {
   background-color: var(--color-primary);
   color: var(--color-primary-paragraph);
-  border-radius: 0 0 var(--padding-content-box) var(--padding-content-box);
-  box-shadow: 0px 1px 2px 0px var(--color-highlight);
+  border-radius: 0 0 var(--content-box-padding) var(--content-box-padding);
+  box-shadow: 0px 1px 3px 1px var(--color-highlight);
 }
-
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__screenshot {
+.project-tile a {
+  color: var(--color-primary-paragraph);
+  text-decoration: none;
+}
+.project-tile__screenshot {
   width: 100%;
   object-fit: cover;
+  border: none;
 }
-
-.project-tile__screenshot--logo {
-  padding: var(--padding-content-box);
+.project-tile__logo {
+  /* Another good place to implement SCSS */
+  width: 100%;
+  object-fit: cover;
+  border: none;
+  padding: var(--content-box-padding);
 }
-
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description {
+.project-tile__description {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: var(--font-family-headings);
 }
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a {
-  color: var(--color-primary-paragraph);
-  text-decoration: none;
-}
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a:last-of-type {
+.project-tile__source-link {
   font-size: 80%;
   font-family: "Courier New", Courier, monospace;
-  padding-bottom: var(--padding-content-box);
+  padding-bottom: var(--content-box-padding);
 }
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a:last-of-type:hover {
+.project-tile__source-link:hover {
   text-decoration: underline;
 }
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a:last-of-type:before {
+.project-tile__source-link:before {
   content: "<";
 }
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a:last-of-type:after {
+.project-tile__source-link:after {
   content: ">";
 }
 
-.section.section--contact {
-  background-color: var(--color-secondary2);
-  color: var(--color-secondary2-paragraph);
-  height: 35vh;
-}
-.section.section--contact .contact-nav {
+.contact-nav {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
-.contact-nav .nav-link {
+.contact-nav__nav-link {
   color: var(--color-secondary2-paragraph);
 }
-.contact-nav .nav-link .fab {
+.contact-nav__nav-link .fab {
   color: var(--color-highlight);
+  margin-left: var(--content-box-padding);
 }
-
-.section.section--contact .contact-nav .contact-nav .nav-link {
+.contact-nav__nav-link {
   color: var(--color-secondary2-paragraph);
-}
-
-.contact-section-header h2 {
-  margin-block-start: 0;
 }
 
 @media (max-width: 600px) {
@@ -279,22 +247,16 @@ hr.section-header-hr {
     --header-height-adjust-ratio: 0.8;
   }
 
-  .site-nav .nav-items {
-    width: 100%;
-  }
-
-  .site-nav .professional-logo {
+  .site-nav__logo {
     /* margin-right: unset; */
-    height: calc(
-      var(--professional-logo-height) * var(--header-height-adjust-ratio)
-    );
+    height: calc(var(--height) * var(--header-height-adjust-ratio));
   }
 
-  .section.section--portfolio {
+  .section--portfolio {
     width: 97%;
   }
 
-  .section.section--portfolio .projects-container {
+  .project-container {
     grid-template-columns: 1fr;
   }
 

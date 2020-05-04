@@ -1,53 +1,48 @@
-<nav
-  id="navbar"
-  class="site-nav"
-  role="navigation"
-  aria-label="Main navigation"
->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
   <img
     src="./assets/logos/Color logo - no background.svg"
     alt="professional logo"
-    class="professional-logo"
+    class="site-nav__logo"
   />
-  <a href="#welcome-section" class="nav-link">About</a>
-  <a href="#projects" class="nav-link">Portfolio</a>
-  <a href="#contact-section" class="nav-link">Contact</a>
+  <a href="#welcome-section" class="nav-link site-nav__nav-link">About</a>
+  <a href="#portfolio-section" class="nav-link site-nav__nav-link">Portfolio</a>
+  <a href="#contact-section" class="nav-link site-nav__nav-link">Contact</a>
 </nav>
 <main class="main">
   <section
     id="welcome-section"
     class="section section--welcome"
     role="region"
-    aria-labelledby="welcome-section-header"
+    aria-labelledby="welcome-header"
   >
-    <header id="welcome-section-header" class="welcome-section-header">
-      <h1>LightMotive is Andre Light</h1>
-      <hr class="section-header-hr" />
-      <div class="welcome-section-sub-header">Trusted Strategic Leader</div>
+    <header id="welcome-header">
+      <h1 class="section__header--centered-main">LightMotive is Andre Light</h1>
+      <hr class="section__header-hr" />
+      <h2 class="section__header">Trusted Strategic Leader</h2>
     </header>
-    <img
-      src="./assets/andre_headshot.jpg"
-      class="profile-photo"
-      alt="headshot"
-    />
-    <div class="profile-photo-caption">
-      <p>
+    <figure class="profile-figure">
+      <img
+        src="./assets/andre_headshot.jpg"
+        class="profile-figure__photo"
+        alt="headshot"
+      />
+      <figcaption class="profile-figure__caption">
         Helping humanness shine through empathetic tech enablement and
-        innovative software solutions.
-      </p>
-    </div>
+        innovative software solutions
+      </figcaption>
+    </figure>
   </section>
   <section
-    id="projects"
+    id="portfolio-section"
     class="section section--portfolio"
     role="region"
-    aria-labelledby="projects-header"
+    aria-labelledby="portfolio-header"
   >
-    <header id="projects-header" class="projects-header">
-      <h2>Portfolio</h2>
-      <hr class="section-header-hr" />
+    <header id="portfolio-header">
+      <h2 class="section__header">Portfolio</h2>
+      <hr class="section__header-hr" />
     </header>
-    <div class="projects-container">
+    <div class="project-container">
       <div class="project-tile">
         <a href="#">
           <img
@@ -60,6 +55,7 @@
             <a
               href="https://github.com/lightmotive/lightmotive-profile"
               target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -81,6 +77,7 @@
             <a
               href="https://github.com/lightmotive/fcc-technical-documentation-page/"
               target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -102,6 +99,7 @@
             <a
               href="https://github.com/lightmotive/fcc-product-landing-page/"
               target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -120,6 +118,7 @@
             <a
               href="https://github.com/lightmotive/fcc-tribute-page/"
               target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -138,6 +137,7 @@
             <a
               href="https://github.com/lightmotive/lightmotive-profile"
               target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -149,11 +149,14 @@
           <img
             src="./assets/logos/Color logo - no background.svg"
             alt="project screenshot"
-            class="project-tile__screenshot project-tile__screenshot--logo"
+            class="project-tile__logo"
           />
           <div class="project-tile__description">
             <span>Active GitHub projects</span>
-            <a href="https://github.com/lightmotive/" target="_blank"
+            <a
+              href="https://github.com/lightmotive/"
+              target="_blank"
+              class="project-tile__source-link"
               >View all</a
             >
           </div>
@@ -167,26 +170,26 @@
     id="contact-section"
     class="section section--contact"
     role="region"
-    aria-labelledby="contact-section-header"
+    aria-labelledby="contact-header"
   >
-    <header id="contact-section-header" class="contact-section-header">
-      <h2>Contact</h2>
-      <hr class="section-header-hr" />
+    <header id="contact-header">
+      <h2 class="section__header--centered-main">Contact</h2>
+      <hr class="section__header-hr" />
     </header>
     <nav class="contact-nav" role="navigation" aria-label="Contact navigation">
       <a
         id="profile-link"
         href="https://github.com/lightmotive/"
         target="_blank"
-        class="nav-link"
-        >Feel free to stalk first <i class="fab fa-github"></i
+        class="nav-link contact-nav__nav-link"
+        >Feel free to stalk first<i class="fab fa-github"></i
       ></a>
       <br />
       <a
         href="https://www.linkedin.com/in/andrelight/"
         target="_blank"
-        class="nav-link"
-        >Possibly a good fit? <i class="fab fa-linkedin"></i
+        class="nav-link contact-nav__nav-link"
+        >Possibly a good fit?<i class="fab fa-linkedin"></i
       ></a>
     </nav>
   </section>
