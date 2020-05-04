@@ -1,25 +1,42 @@
+@font-face {
+  font-family: "Pier Sans";
+  src: url("./assets/fonts/pier-sans/PierSans-Regular.otf"); /* PierSans downloaded from https://befonts.com/wp-content/uploads/2019/08/piersans-freeforpersonaluse.zip */
+}
+
 :root {
   /* Font */
-  /* Font sources: https://fonts.google.com/specimen/Libre+Baskerville and https://fonts.google.com/specimen/Open+Sans */
-  --font-family-headings: "Open Sans", sans-serif;
-  --font-family-paragraph: "Libre Baskerville", serif;
+  --font-family-headings: "Pier Sans", sans-serif;
+  --font-family-paragraph: "Libre Baskerville", serif; /* Font source: loaded via index.html: https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap */
 
   /* Color - Source: TBD */
-  --color-primary: white;
-  --color-primary-paragraph: #238a91;
-  --color-secondary1: #238a91;
-  --color-secondary1-paragraph: white;
-  --color-secondary2: #1761a0;
-  --color-secondary2-paragraph: white;
+  --color-primary: #262c37;
+  --color-primary-header: white;
+  --color-primary-paragraph: white;
+  --color-secondary1: var(--color-primary-paragraph);
+  --color-secondary1-header: var(--color-primary);
+  --color-secondary1-paragraph: var(--color-primary);
+  --color-secondary2: var(--color-primary);
+  --color-secondary2-paragraph: var(--color-primary-paragraph);
+  --color-highlight: #988d77;
+  --color-highlight-text: #007fff;
 
   /* Size */
-  --header-height: 70px;
+  --body-min-width: 360px;
+  --header-height: 80px;
   --header-height-adjust-ratio: 1;
   --font-size-main: 1.2em;
-  --font-size-heading-step: 0.1625;
-  --professional-logo-width: 90px;
-  --professional-logo-height: 55.5px;
-  --padding-content-box: 0.5em;
+  --content-box-padding: 0.5em;
+}
+.site-nav__logo {
+  --height: 55px;
+}
+.site-nav {
+  --logo-text-height-offset: 26px;
+}
+.profile-figure {
+  --photo-width: 420px;
+}
+.project-container {
   --tile-min-width: 300px;
 }
 
@@ -42,49 +59,52 @@ body {
   font-family: var(--font-family-paragraph);
   font-size: var(--font-size-main);
   margin: 0;
+  min-width: var(--body-min-width);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header {
+.nav-link {
+  text-decoration: initial;
+  color: var(--color-highlight);
   font-family: var(--font-family-headings);
 }
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* site-nav */
 
 .site-nav {
   display: flex;
-  justify-content: Center;
+  justify-content: center;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  padding: var(--padding-content-box);
   width: 100%;
   z-index: 10;
   height: calc(var(--header-height) * var(--header-height-adjust-ratio));
   background-color: var(--color-primary);
   color: var(--color-primary-paragraph);
 }
-
-.site-nav .professional-logo {
-  justify-self: flex-start;
-  width: var(--professional-logo-width);
-  height: var(--professional-logo-height);
-  margin-left: var(--padding-content-box);
+.site-nav__logo {
+  height: var(--height);
+  margin-right: calc(var(--content-box-padding) * 4);
+}
+.site-nav__nav-link {
+  margin-left: calc(var(--content-box-padding) * 2);
+  font-size: calc(var(--font-size-main) * var(--header-height-adjust-ratio));
+  padding-top: calc(
+    var(--logo-text-height-offset) * var(--header-height-adjust-ratio)
+  );
 }
 
-.nav-link {
-  text-decoration: initial;
-  font-weight: bold;
+@media (max-width: 575px) {
+  .site-nav__logo {
+    height: calc(var(--height) * var(--header-height-adjust-ratio));
+  }
 }
 
-.site-nav .nav-link {
-  color: var(--color-primary-paragraph);
-  margin-left: calc(var(--padding-content-box) * 2);
-}
+/* main */
 
 .main {
   margin-top: calc(var(--header-height) * var(--header-height-adjust-ratio));
@@ -92,6 +112,8 @@ header {
   flex-direction: column;
   align-content: center;
 }
+
+/* sections */
 
 .section {
   display: flex;
@@ -101,126 +123,167 @@ header {
   text-align: center;
   padding: 0 10%;
 }
-
-.section.section--welcome {
-  height: 100vh;
-  background-color: var(--color-secondary1);
-  color: var(--color-secondary1-paragraph);
+.section--about {
+  height: calc(
+    100vh - calc(var(--header-height) * var(--header-height-adjust-ratio))
+  );
+  background-color: var(--color-primary);
+  color: var(--color-primary-paragraph);
 }
-
-.profile-photo {
-  width: 200px;
-  border-radius: 50%;
-}
-
-.section.section--portfolio {
+.section--portfolio {
   align-self: center;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 2em;
+  padding-bottom: calc(var(--content-box-padding) * 4);
+  background-color: var(--color-secondary1);
+  color: var(--color-secondary1-paragraph);
 }
-
-.section.section--portfolio header {
-  align-self: flex-start;
-}
-
-.section.section--portfolio .projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--tile-min-width), 1fr));
-  grid-gap: calc(var(--padding-content-box) * 3);
-  width: 100%;
-}
-
-.section.section--portfolio .projects-container .project-tile {
-  background-color: var(--color-primary-paragraph);
-  color: var(--color-primary);
-  border-radius: 0 0 var(--padding-content-box) var(--padding-content-box);
-}
-
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__screenshot {
-  width: 100%;
-  object-fit: cover;
-}
-
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a:last-of-type {
-  font-size: 70%;
-}
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a:last-of-type:before {
-  content: "<";
-}
-.section.section--portfolio
-  .projects-container
-  .project-tile
-  .project-tile__description
-  a:last-of-type:after {
-  content: ">";
-}
-
-.section.section--contact {
+.section--contact {
   background-color: var(--color-secondary2);
   color: var(--color-secondary2-paragraph);
   height: 35vh;
 }
-.section.section--contact .contact-nav {
+.section__header {
+  font-family: var(--font-family-headings);
+  font-weight: normal;
+}
+.section__header--centered-main {
+  /* SCSS mixin would be useful here to enable composition and eliminate duplicate code */
+  font-family: var(--font-family-headings);
+  font-weight: normal;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 2em;
+}
+.section__header--centered {
+  /* SCSS mixin would be useful here to enable composition and eliminate duplicate code */
+  font-family: var(--font-family-headings);
+  font-weight: normal;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.section__header-hr {
+  height: 2px;
+  border: 0;
+  border-top: 1px solid var(--color-highlight);
+  margin: 1em 0;
+}
+
+/* about section */
+
+.profile-figure {
+  width: 100%;
+  max-width: calc(var(--photo-width) + 30px);
+}
+.profile-figure__photo {
+  width: 100%;
+  max-width: var(--photo-width);
+  border-radius: 3%;
+  box-shadow: 0px 0px 5px 0px var(--color-highlight);
+}
+.profile-figure__caption {
+  width: 100%;
+  margin-top: var(--content-box-padding);
+  font-style: italic;
+}
+
+/* portfolio section */
+
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile-min-width), 1fr));
+  grid-gap: calc(var(--content-box-padding) * 3);
+  width: 100%;
+  margin-bottom: calc(var(--content-box-padding) * 3);
+}
+
+.project-tile {
+  background-color: var(--color-primary);
+  color: var(--color-primary-paragraph);
+  border-radius: 0 0 var(--content-box-padding) var(--content-box-padding);
+  box-shadow: 0px 1px 3px 1px var(--color-highlight);
+}
+.project-tile a {
+  color: var(--color-primary-paragraph);
+  text-decoration: none;
+}
+.project-tile__screenshot {
+  width: 100%;
+  object-fit: cover;
+  border: none;
+}
+.project-tile__logo {
+  /* Another good place to implement SCSS */
+  width: 100%;
+  object-fit: cover;
+  border: none;
+  padding: var(--content-box-padding);
+}
+.project-tile__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-family-headings);
+}
+.project-tile__source-link {
+  font-size: 80%;
+  font-family: "Courier New", Courier, monospace;
+  padding-bottom: var(--content-box-padding);
+}
+.project-tile__source-link:hover {
+  text-decoration: underline;
+}
+.project-tile__source-link:before {
+  content: "<";
+}
+.project-tile__source-link:after {
+  content: ">";
+}
+
+@media (max-width: 575px) {
+  .project-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* contact section */
+
+.contact-nav {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
-.contact-nav .nav-link {
+.contact-nav__nav-link {
   color: var(--color-secondary2-paragraph);
 }
-
-.section.section--contact .contact-nav .contact-nav .nav-link {
-  color: var(--color-secondary2-paragraph);
+.contact-nav__nav-link .fab {
+  color: var(--color-highlight);
+  margin-left: var(--content-box-padding);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 575px) {
   :root {
-    /* --header-height-adjust-ratio: 1.65;
-    --font-size-heading-step: 0.13; */
-  }
-
-  .site-nav .nav-items {
-    width: 100%;
+    --header-height-adjust-ratio: 0.8;
   }
 
   .section {
-    padding: 0 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
   }
 
-  .section.section--portfolio {
+  .section--portfolio {
     width: 97%;
   }
+}
 
-  .section.section--portfolio .projects-container {
-    grid-template-columns: 1fr;
+@media (max-width: 475px) {
+  :root {
+    --header-height-adjust-ratio: 0.7;
+  }
+}
+
+@media (max-width: 425px) {
+  :root {
+    --header-height-adjust-ratio: 0.6;
   }
 }

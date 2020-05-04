@@ -1,6 +1,6 @@
 require("../src/style.css");
 import bodyContent from "../src/body-content.html";
-import faviconPath from "../src/assets/professional-logo-icon-72x72.png";
+import faviconPath from "../src/assets/logos/favicon_symbol.png";
 
 const faviconLink = document.createElement("link");
 faviconLink.rel = "icon";

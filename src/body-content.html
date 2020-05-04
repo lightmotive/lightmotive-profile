@@ -1,98 +1,61 @@
-<nav
-  id="navbar"
-  class="site-nav"
-  role="navigation"
-  aria-label="Main navigation"
->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
   <img
-    src="./assets/professional-logo-111x180.png"
+    src="./assets/logos/Color logo - no background.svg"
     alt="professional logo"
-    class="professional-logo"
+    class="site-nav__logo"
   />
-  <a href="#welcome-section" class="nav-link">About</a>
-  <a href="#projects" class="nav-link">Portfolio</a>
-  <a href="#contact-section" class="nav-link">Contact</a>
+  <a href="#about-section" class="nav-link site-nav__nav-link">About</a>
+  <a href="#portfolio-section" class="nav-link site-nav__nav-link">Portfolio</a>
+  <a href="#contact-section" class="nav-link site-nav__nav-link">Contact</a>
 </nav>
 <main class="main">
   <section
-    id="welcome-section"
-    class="section section--welcome"
+    id="about-section"
+    class="section section--about"
     role="region"
-    aria-labelledby="welcome-section-header"
+    aria-labelledby="about-header"
   >
-    <header id="welcome-section-header">
-      <h1>LightMotive is Andre Light</h1>
+    <header id="about-header">
+      <h1 class="section__header--centered-main">LightMotive is Andre Light</h1>
+      <hr class="section__header-hr" />
+      <h2 class="section__header">Trusted Strategic Leader</h2>
     </header>
-    <img
-      src="https://www.gravatar.com/avatar/b2934cae6366d26037b082551e662a7e.jpg?s=400"
-      class="profile-photo"
-      alt="personal photo"
-    />
-    <h2>Trusted Strategic Leader</h2>
-    <p>
-      Helping humanness shine through empathetic tech enablement and innovative
-      software solutions.
-    </p>
+    <figure class="profile-figure">
+      <img
+        src="./assets/andre_headshot.jpg"
+        class="profile-figure__photo"
+        alt="headshot"
+      />
+      <figcaption class="profile-figure__caption">
+        Helping humanness shine through empathetic tech enablement and
+        innovative software solutions
+      </figcaption>
+    </figure>
   </section>
   <section
-    id="projects"
+    id="portfolio-section"
     class="section section--portfolio"
     role="region"
-    aria-labelledby="projects-header"
+    aria-labelledby="portfolio-header"
   >
-    <header id="projects-header"><h2>Portfolio</h2></header>
-    <div class="projects-container">
+    <header id="portfolio-header">
+      <h2 class="section__header">Portfolio</h2>
+      <hr class="section__header-hr" />
+    </header>
+    <div class="project-container">
       <div class="project-tile">
-        <a href="#" target="_blank">
+        <a href="#">
           <img
-            src="./assets/screenshot-fcc-personal-portfolio-webpage.png"
+            src="./assets/screenshot-lightmotive-profile.png"
             alt="project screenshot"
             class="project-tile__screenshot"
           />
           <div class="project-tile__description">
-            <span>Personal profile</span>
+            <span>Professional profile (this page)</span>
             <a
-              href="https://github.com/lightmotive/fcc-personal-portfolio-webpage"
+              href="https://github.com/lightmotive/lightmotive-profile"
               target="_blank"
-              >Source</a
-            >
-          </div>
-        </a>
-      </div>
-
-      <div class="project-tile">
-        <a
-          href="https://lightmotive.pro/fcc-product-landing-page/"
-          target="_blank"
-        >
-          <img
-            src="./assets/screenshot-fcc-product-landing-page.png"
-            alt="project screenshot"
-            class="project-tile__screenshot"
-          />
-          <div class="project-tile__description">
-            <span>Product landing</span>
-            <a
-              href="https://github.com/lightmotive/fcc-product-landing-page/"
-              target="_blank"
-              >Source</a
-            >
-          </div>
-        </a>
-      </div>
-
-      <div class="project-tile">
-        <a href="https://lightmotive.pro/fcc-tribute-page/" target="_blank">
-          <img
-            src="./assets/screenshot-fcc-tribute-page.png"
-            alt="project screenshot"
-            class="project-tile__screenshot"
-          />
-          <div class="project-tile__description">
-            <span>Tribute</span>
-            <a
-              href="https://github.com/lightmotive/fcc-tribute-page/"
-              target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -114,6 +77,48 @@
             <a
               href="https://github.com/lightmotive/fcc-technical-documentation-page/"
               target="_blank"
+              class="project-tile__source-link"
+              >Source</a
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="project-tile">
+        <a
+          href="https://lightmotive.pro/fcc-product-landing-page/"
+          target="_blank"
+        >
+          <img
+            src="./assets/screenshot-fcc-product-landing-page.png"
+            alt="project screenshot"
+            class="project-tile__screenshot"
+          />
+          <div class="project-tile__description">
+            <span>Product landing</span>
+            <a
+              href="https://github.com/lightmotive/fcc-product-landing-page/"
+              target="_blank"
+              class="project-tile__source-link"
+              >Source</a
+            >
+          </div>
+        </a>
+      </div>
+
+      <div class="project-tile">
+        <a href="https://lightmotive.pro/fcc-tribute-page/" target="_blank">
+          <img
+            src="./assets/screenshot-fcc-tribute-page.png"
+            alt="project screenshot"
+            class="project-tile__screenshot"
+          />
+          <div class="project-tile__description">
+            <span>Tribute</span>
+            <a
+              href="https://github.com/lightmotive/fcc-tribute-page/"
+              target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -132,6 +137,7 @@
             <a
               href="https://github.com/lightmotive/lightmotive-profile"
               target="_blank"
+              class="project-tile__source-link"
               >Source</a
             >
           </div>
@@ -141,13 +147,18 @@
       <div class="project-tile">
         <a href="#" target="_blank">
           <img
-            src="./assets/professional-logo-111x180.png"
+            src="./assets/logos/Color logo - no background.svg"
             alt="project screenshot"
-            class="project-tile__screenshot"
+            class="project-tile__logo"
           />
           <div class="project-tile__description">
-            <span>More soon...</span>
-            <a href="#" target="_blank">Source</a>
+            <span>Active GitHub projects</span>
+            <a
+              href="https://github.com/lightmotive/"
+              target="_blank"
+              class="project-tile__source-link"
+              >View all</a
+            >
           </div>
         </a>
       </div>
@@ -159,32 +170,27 @@
     id="contact-section"
     class="section section--contact"
     role="region"
-    aria-labelledby="contact-section-header"
+    aria-labelledby="contact-header"
   >
-    <div>
-      <header id="contact-section-header">
-        <h2>Contact</h2>
-      </header>
-      <nav
-        class="contact-nav"
-        role="navigation"
-        aria-label="Contact navigation"
-      >
-        <a
-          id="profile-link"
-          href="https://github.com/lightmotive/"
-          target="_blank"
-          class="nav-link"
-          >Feel free to stalk first <i class="fab fa-github"></i
-        ></a>
-        <br />
-        <a
-          href="https://www.linkedin.com/in/andrelight/"
-          target="_blank"
-          class="nav-link"
-          >Are we a good fit? <i class="fab fa-linkedin"></i
-        ></a>
-      </nav>
-    </div>
+    <header id="contact-header">
+      <h2 class="section__header--centered-main">Contact</h2>
+      <hr class="section__header-hr" />
+    </header>
+    <nav class="contact-nav" role="navigation" aria-label="Contact navigation">
+      <a
+        id="profile-link"
+        href="https://github.com/lightmotive/"
+        target="_blank"
+        class="nav-link contact-nav__nav-link"
+        >Feel free to stalk first<i class="fab fa-github"></i
+      ></a>
+      <br />
+      <a
+        href="https://www.linkedin.com/in/andrelight/"
+        target="_blank"
+        class="nav-link contact-nav__nav-link"
+        >Possibly a good fit?<i class="fab fa-linkedin"></i
+      ></a>
+    </nav>
   </section>
 </footer>
