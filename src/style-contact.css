@@ -1,0 +1,15 @@
+.contact-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.contact-nav__nav-link {
+  color: var(--color-secondary2-paragraph);
+}
+.contact-nav__nav-link .fab {
+  color: var(--color-highlight);
+  margin-left: var(--content-box-padding);
+}
+.contact-nav__nav-link {
+  color: var(--color-secondary2-paragraph);
+}
