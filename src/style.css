@@ -27,8 +27,17 @@
   --font-size-main: 1.2em;
   --content-box-padding: 0.5em;
 }
+.site-nav__logo {
+  --height: 55px;
+}
+.site-nav {
+  --logo-text-height-offset: 26px;
+}
 .profile-figure {
   --photo-width: 420px;
+}
+.project-container {
+  --tile-min-width: 300px;
 }
 
 html {
@@ -62,12 +71,49 @@ body {
   text-decoration: underline;
 }
 
+/* site-nav */
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  height: calc(var(--header-height) * var(--header-height-adjust-ratio));
+  background-color: var(--color-primary);
+  color: var(--color-primary-paragraph);
+}
+.site-nav__logo {
+  height: var(--height);
+  margin-right: calc(var(--content-box-padding) * 4);
+}
+.site-nav__nav-link {
+  margin-left: calc(var(--content-box-padding) * 2);
+  font-size: calc(var(--font-size-main) * var(--header-height-adjust-ratio));
+  padding-top: calc(
+    var(--logo-text-height-offset) * var(--header-height-adjust-ratio)
+  );
+}
+
+@media (max-width: 575px) {
+  .site-nav__logo {
+    height: calc(var(--height) * var(--header-height-adjust-ratio));
+  }
+}
+
+/* main */
+
 .main {
   margin-top: calc(var(--header-height) * var(--header-height-adjust-ratio));
   display: flex;
   flex-direction: column;
   align-content: center;
 }
+
+/* section */
 
 .section {
   display: flex;
@@ -77,7 +123,7 @@ body {
   text-align: center;
   padding: 0 10%;
 }
-.section--welcome {
+.section--about {
   height: calc(
     100vh - calc(var(--header-height) * var(--header-height-adjust-ratio))
   );
@@ -123,6 +169,7 @@ body {
   margin: 1em 0;
 }
 
+/* about section */
 .profile-figure {
   width: 100%;
   max-width: calc(var(--photo-width) + 30px);
@@ -137,6 +184,83 @@ body {
   width: 100%;
   margin-top: var(--content-box-padding);
   font-style: italic;
+}
+
+/* portfolio section */
+
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile-min-width), 1fr));
+  grid-gap: calc(var(--content-box-padding) * 3);
+  width: 100%;
+  margin-bottom: calc(var(--content-box-padding) * 3);
+}
+
+.project-tile {
+  background-color: var(--color-primary);
+  color: var(--color-primary-paragraph);
+  border-radius: 0 0 var(--content-box-padding) var(--content-box-padding);
+  box-shadow: 0px 1px 3px 1px var(--color-highlight);
+}
+.project-tile a {
+  color: var(--color-primary-paragraph);
+  text-decoration: none;
+}
+.project-tile__screenshot {
+  width: 100%;
+  object-fit: cover;
+  border: none;
+}
+.project-tile__logo {
+  /* Another good place to implement SCSS */
+  width: 100%;
+  object-fit: cover;
+  border: none;
+  padding: var(--content-box-padding);
+}
+.project-tile__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-family-headings);
+}
+.project-tile__source-link {
+  font-size: 80%;
+  font-family: "Courier New", Courier, monospace;
+  padding-bottom: var(--content-box-padding);
+}
+.project-tile__source-link:hover {
+  text-decoration: underline;
+}
+.project-tile__source-link:before {
+  content: "<";
+}
+.project-tile__source-link:after {
+  content: ">";
+}
+
+@media (max-width: 575px) {
+  .project-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* contact section */
+
+.contact-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.contact-nav__nav-link {
+  color: var(--color-secondary2-paragraph);
+}
+.contact-nav__nav-link .fab {
+  color: var(--color-highlight);
+  margin-left: var(--content-box-padding);
+}
+.contact-nav__nav-link {
+  color: var(--color-secondary2-paragraph);
 }
 
 @media (max-width: 575px) {
