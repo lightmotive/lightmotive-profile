@@ -113,7 +113,7 @@ body {
   align-content: center;
 }
 
-/* section */
+/* sections */
 
 .section {
   display: flex;
@@ -170,6 +170,7 @@ body {
 }
 
 /* about section */
+
 .profile-figure {
   width: 100%;
   max-width: calc(var(--photo-width) + 30px);
@@ -259,9 +260,6 @@ body {
   color: var(--color-highlight);
   margin-left: var(--content-box-padding);
 }
-.contact-nav__nav-link {
-  color: var(--color-secondary2-paragraph);
-}
 
 @media (max-width: 575px) {
   :root {
@@ -269,7 +267,8 @@ body {
   }
 
   .section {
-    padding: 0 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
   }
 
   .section--portfolio {
