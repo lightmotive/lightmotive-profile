@@ -228,7 +228,7 @@ body {
 .project-tile__source-link {
   font-size: 80%;
   font-family: "Courier New", Courier, monospace;
-  padding-bottom: var(--content-box-padding);
+  padding: var(--content-box-padding) 0;
 }
 .project-tile__source-link:hover {
   text-decoration: underline;
